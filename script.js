@@ -8,21 +8,24 @@ const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkWeather(city = "New York"){
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+    const data = await response.json();
 
     if(response.status == 404){
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
     }else{
-        const data = await response.json();
+        
 
         const cityInfo = {
             name: data.name || "Unknown",
-            country: data.syst?.country || "Unknown",
+            coordinates: `Lat: ${data.coord?.lat}, Lon: ${data.coord?.lon}` || "Unknown",
             timezone: data.timezone || "Unknown",
         };
         console.log("City Info:", cityInfo);
+        
 
-    document.querySelector(".city").innerHTML = `${cityInfo.name}, ${cityInfo.country}`;
+    document.querySelector(".city-name").innerHTML = cityInfo.name;
+    document.querySelector(".city-coordinates").innerHTML = cityInfo.coordinates;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
