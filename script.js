@@ -1,6 +1,6 @@
 
 const apiKey = "c58deec9381a085ee7a2e646e341e9e6";
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric7q=";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={apiKey}";
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
