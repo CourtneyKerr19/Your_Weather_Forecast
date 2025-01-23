@@ -122,3 +122,9 @@ body{
 .forecast-day p {
     margin: 0;
 }
+
+.city-preview {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+}

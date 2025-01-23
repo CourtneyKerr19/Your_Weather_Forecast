@@ -113,3 +113,8 @@ searchBtn.addEventListener("click", () => {
 
 checkWeather();
 displayForecast("New York");
+
+searchBox.addEventListener("input", () => {
+    const cityPreview = document.querySelector(".city-preview");
+    cityPreview.textContent = searchBox.value.trim();  // Shows the current input text as city preview
+});
