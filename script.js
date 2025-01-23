@@ -15,7 +15,13 @@ async function checkWeather(city){
     }else{
         var data = await response.json();
 
-    document.querySelector(".city").innerHTML = data.name;
+        const cityInfo = {
+            name: data.name,
+            country: data.system.country,
+            timezone: data.timezone,
+        };
+
+    document.querySelector(".city").innerHTML = `${cityInfo.name}, ${cityInfo.country}`;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
