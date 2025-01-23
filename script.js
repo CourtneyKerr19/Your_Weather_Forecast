@@ -13,13 +13,14 @@ async function checkWeather(city){
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
     }else{
-        var data = await response.json();
+        const data = await response.json();
 
         const cityInfo = {
-            name: data.name,
-            country: data.system.country,
-            timezone: data.timezone,
+            name: data.name || "Unknown",
+            country: data.syst?.country || "Unknown",
+            timezone: data.timezone || "Unknown",
         };
+        console.log("API Response:", data);
 
     document.querySelector(".city").innerHTML = `${cityInfo.name}, ${cityInfo.country}`;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
