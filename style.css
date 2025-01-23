@@ -103,3 +103,22 @@ body{
     display: block;
     margin-top: 5px;
 }
+.forecast {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.forecast-day p {
+    margin: 0;
+}
