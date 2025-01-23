@@ -1,9 +1,12 @@
 
 const apiKey = "c58deec9381a085ee7a2e646e341e9e6";
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric7q=memphis";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric7q=";
 
-async function checkWeather(){
-    const response = await fetch(apiUrl + `&appid=${apiKey}`);
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+
+async function checkWeather(city){
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     var data = await response.json();
 
     console.log(data);
@@ -13,5 +16,9 @@ async function checkWeather(){
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 }
+
+searchBtn.addEventListener("click", ()=>{
+    checkWeather(searchBox.value);
+})
 
 checkWeather();
