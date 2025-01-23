@@ -47,3 +47,7 @@ body{
 .search button img{
     width: 16px;
 }
+.weather-icon{
+    font-size: 80px;
+    font-weight: 500;
+}
