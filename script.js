@@ -6,7 +6,7 @@ const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
-async function checkWeather(city){
+async function checkWeather(city = "New York"){
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
 
     if(response.status == 404){
@@ -20,7 +20,7 @@ async function checkWeather(city){
             country: data.syst?.country || "Unknown",
             timezone: data.timezone || "Unknown",
         };
-        console.log("API Response:", data);
+        console.log("City Info:", cityInfo);
 
     document.querySelector(".city").innerHTML = `${cityInfo.name}, ${cityInfo.country}`;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
@@ -52,8 +52,12 @@ async function checkWeather(city){
 
     
 
-searchBtn.addEventListener("click", ()=>{
-    checkWeather(searchBox.value);
-})
-
-checkWeather();
+    searchBtn.addEventListener("click", () => {
+        const city = searchBox.value.trim(); 
+        if (city === "") {
+            console.error("City name is empty");
+            document.querySelector(".error").style.display = "block";
+            return;
+        }
+        checkWeather(city); 
+    });
