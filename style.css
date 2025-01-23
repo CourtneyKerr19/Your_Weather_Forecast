@@ -72,3 +72,7 @@ body{
     align-items: center;
     text-align: left;
 }
+.col img{
+    width: 40px;
+    margin-right: 10px;
+}
