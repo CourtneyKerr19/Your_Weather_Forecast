@@ -92,6 +92,12 @@ async function displayForecast(city) {
     });
 }
 
+searchBox.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        searchBtn.click();
+    }
+});
+
 searchBtn.addEventListener("click", () => {
     const city = searchBox.value.trim();
 
